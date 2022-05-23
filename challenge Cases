@@ -1,0 +1,33 @@
+
+1st Scenario { Check if the Email is blank. }
+	if true: Error => Log
+	else enter the correct email
+Check if the password is blank
+	if true: Error => Log and take an Evidence
+	else enter the correct email
+
+2nd Scenario { Identify email field is correct email and check if the password is blank. }
+Check if the Email is correct
+	if true: 
+		Check if the password is blank
+			if true: Error => Log and take an Evidence
+
+3th Scenario {Identify the email isn't exists. }
+Check if the Email isn't exists
+	if true: Error => Log and take an Evidence
+
+4th Scenario { Identify if the email exists and wrong password. }
+Check the email exists
+	if true: Check if the password is wrong
+		if true: Error => Log and take an Evidence
+
+5th Scenario { Correct login with Email exists & Password is correct. }
+Check the email exists
+	if true: Check the password is correct
+		if true: Verify if it's ok with the login
+		else: Error => Log and take an Evidence
+	else: Error => Log
+
+
+
+
