@@ -21,21 +21,21 @@ Technical Requirements:
 
 * Add the next JARs as modules (Those JARs are iclude on "jars and others" folder).
 
-  -byte-buddy-1.8.15.jar
+  - byte-buddy-1.8.15.jar
 
-  -client-combined-3.141.59-sources.jar
+  - client-combined-3.141.59-sources.jar
 
-  -client-combined-3.141.59.jar
+  - client-combined-3.141.59.jar
 
-  -commons-exec-1.3.jar
- 
-  -commons-io-2.11.0.jar
+  - commons-exec-1.3.jar
+  
+  - commons-io-2.11.0.jar
 
-  -guava-25.0-jre.jar
+  - guava-25.0-jre.jar
 
-  -okhttp-3.11.0.jar
+  - okhttp-3.11.0.jar
 
- -okio-1.14.0.jar
+  - okio-1.14.0.jar
 
 * I have been testing on Google Chrome version 101.0.4951.64,
 
