@@ -5,11 +5,11 @@ This project is about to Automation Test Challenge
 
 Requirements:
 
--Access Gmail site and validate a user (Using any email and password no need to share that with us)
--Go to label list click more on the categories list
--Create a new category and save it.
--Go to spam folder and then empty the spam folder.
--Sign out of the account.
+*Access Gmail site and validate a user (Using any email and password no need to share that with us)
+*Go to label list click more on the categories list
+*Create a new category and save it.
+*Go to spam folder and then empty the spam folder.
+*Sign out of the account.
 
 Technical Requirements:
 
