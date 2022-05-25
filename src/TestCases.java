@@ -5,17 +5,22 @@ import java.io.IOException;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 
+
 public class TestCases {
-    public TestCases(){}
-    public void testCases(WebDriver driver) throws IOException {
-        MyLibs myLibs = new MyLibs();
+    MyLibs myLibs;
+    public TestCases(){
+        myLibs = new MyLibs();
         myLibs.startLogFile();
-        System.out.println("STARTING TEST AND LOGS");
+    }
+    public void testCasesLogin(WebDriver driver) throws IOException {
+
+        System.out.println("STARTING TEST AND LOGS :LOGIN:");
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd-HH_mm_ss");
         LocalDateTime now = LocalDateTime.now();
-        myLibs.Log("STARTING TEST - " +  dtf.format(now) + "\n");
+        myLibs.Log("STARTING TEST :LOGIN:" +  dtf.format(now) + "\n");
         myLibs.Log("STARTING: 1st Scenario - ");
         System.out.println("STARTING: 1st Scenario");
+
         // 1st Scenario { Username and Password are blank }
         try{
             WebElement email = driver.findElement(By.name("identifier"));
@@ -195,7 +200,105 @@ public class TestCases {
                 throw new RuntimeException(ex);
             }
         }
-        myLibs.Log("ENDING TEST");
-        System.out.println("...ENDING TEST...");
+        myLibs.Log("\nENDING TEST :LOGIN:\n");
+        System.out.println("...ENDING TEST :LOGIN :...");
     }//testCases
+
+    public void testCasesLabels(WebDriver driver)
+    {
+        System.out.println("...STARTING TEST AND LOGS :NEW LABEL:...");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd-HH_mm_ss");
+        LocalDateTime now = LocalDateTime.now();
+        myLibs.Log("STARTING TEST :NEW LABEL:" +  dtf.format(now) + "\n");
+
+        //Create New Label
+        WebElement button = driver.findElement(By.xpath("//*[@id=\":4g\"]"));
+        button.click();
+
+        //New label button
+        button = driver.findElement(By.xpath("//*[@id=\":43\"]/div[5]/a"));
+        button.click();
+
+        //Waiting to display of New Label Window
+        try{ synchronized ( driver ){ driver.wait(5000); } }catch (Exception e){}
+
+        try {
+            WebDriverWait waiting =  new WebDriverWait(driver, 10);
+            //Write tha Label Name
+            WebElement input = driver.findElement(By.className("xx"));
+            input.sendKeys("My New Label");
+
+            //Create Button
+            button = driver.findElement(By.className("J-at1-auR"));
+            button.click();
+        }catch (Exception e){
+            System.out.println("Label: " + e);
+        }
+
+        System.out.println("...New Label Created...");
+        myLibs.Log("New Label Created" + "\n");
+
+        System.out.println("...ENDING TEST AND LOGS :NEW LABEL:...");
+        myLibs.Log("\nENDING TEST :NEW LABEL:" + "\n");
+    }//testCasesLabels
+
+    public void testCasesSpam(WebDriver driver)
+    {
+        System.out.println("...STARTING TEST AND LOGS :SPAM:...");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd-HH_mm_ss");
+        LocalDateTime now = LocalDateTime.now();
+        myLibs.Log("STARTING TEST :SPAM:" +  dtf.format(now) + "\n");
+
+        //Waiting to display
+        try{ synchronized ( driver ){ driver.wait(5000); } }catch (Exception e){}
+
+        System.out.println("...Click over Spam Link...");
+        myLibs.Log("Click over Spam Link");
+        WebElement button = driver.findElement(By.xpath("//*[@id=\":4v\"]"));
+        button.click();
+
+        //Waiting to display of New Label Window
+        try{ synchronized ( driver ){ driver.wait(5000); } }catch (Exception e){}
+
+        System.out.println("...Click over Checkbox All Spam...");
+        myLibs.Log("Click over Checkbox All Spam");
+        button = driver.findElement(By.xpath("//*[@id=\":69\"]/div[1]/span"));
+        button.click();
+
+        //Waiting to display of New Label Window
+        try{ synchronized ( driver ){ driver.wait(5000); } }catch (Exception e){}
+
+        try{
+            System.out.println("...Click over Delete forever...");
+            myLibs.Log("Click over Delete forever");
+            button = driver.findElement(By.xpath("//*[@id=\":4\"]/div[2]/div[2]/div[1]/div/div/div[2]/div/div"));
+            button.click();
+        }catch (Exception e){
+            System.out.println(e);
+        }
+
+        System.out.println("...ENDING TEST AND LOGS :SPAM:...");
+        myLibs.Log("\nENDING TEST :SPAM:" + "\n");
+    }//testCasesSpam
+
+    public void testCasesLogout(WebDriver driver)
+    {
+        System.out.println("...STARTING TEST AND LOGS :LOGOUT:...");
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy_MM_dd-HH_mm_ss");
+        LocalDateTime now = LocalDateTime.now();
+        myLibs.Log("STARTING TEST :SPAM:" +  dtf.format(now) + "\n");
+
+        //Waiting to display
+        try{ synchronized ( driver ){ driver.wait(5000); } }catch (Exception e){}
+
+        System.out.println("Click over Profile button");
+        WebElement button = driver.findElement(By.xpath("//*[@id=\"gb\"]/div[2]/div[3]/div[1]/div[2]/div/a"));
+        button.click();
+        myLibs.Log("Click over Profile button");
+
+        driver.switchTo().frame(driver.findElements(By.xpath("//*[@id=\"gb\"]/div[2]/div[3]/div[3]/iframe")).get(0));
+        new WebDriverWait(driver, 20).until(ExpectedConditions.elementToBeClickable(By.xpath("//*[@id=\"yDmH0d\"]/c-wiz/div/div/div/div/div[2]/div[3]/span/a/div"))).click();
+        myLibs.Log("Click over Sign out button");
+        myLibs.Log("\nENDING TEST :LOGOUT:" + "\n");
+    }//testCasesLogout
 }//TestCases
