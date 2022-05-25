@@ -3,7 +3,7 @@
 
 This project is about to Automation Test Challenge
 
-Requirements:
+### Requirements:
 
 * Access Gmail site and validate a user (Using any email and password no need to share that with us).
 
@@ -15,7 +15,7 @@ Requirements:
 
 * Sign out of the account.
 
-Technical Requirements:
+### Technical Requirements:
 
 * JSDK 1.8 (This file is iclude on "jars and others" folder).
 
